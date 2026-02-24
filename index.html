@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just Selection - Yasal Belgeler</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh; padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header { text-align: center; color: white; padding: 40px 20px; }
+        .header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 40px 0; }
+        .card {
+            background: white; border-radius: 15px; padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s; text-decoration: none; color: #333; display: block;
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card-icon { font-size: 3em; margin-bottom: 15px; }
+        .card h2 { color: #667eea; margin-bottom: 15px; }
+        .footer { text-align: center; color: white; padding: 20px; opacity: 0.8; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🍷 Just Selection</h1>
+            <p>Yasal Belgeler ve Politikalar</p>
+        </div>
+        <div class="cards">
+            <a href="gizlilik-politikasi.html" class="card">
+                <div class="card-icon">🔒</div>
+                <h2>Gizlilik Politikası</h2>
+                <p>KVKK uyumlu gizlilik politikamız.</p>
+            </a>
+            <a href="kullanim-sartlari.html" class="card">
+                <div class="card-icon">📋</div>
+                <h2>Kullanım Şartları</h2>
+                <p>Uygulama kullanım koşulları.</p>
+            </a>
+            <a href="telif-haklari.html" class="card">
+                <div class="card-icon">©</div>
+                <h2>Telif Hakları</h2>
+                <p>Fikri mülkiyet bilgileri.</p>
+            </a>
+            <a href="hesap-silme.html" class="card">
+                <div class="card-icon">🗑️</div>
+                <h2>Hesap Silme</h2>
+                <p>Hesabınızı silmek için talep oluşturun.</p>
+            </a>
+        </div>
+        <div class="footer">
+            <p>&copy; 2026 Just Selection. Tüm hakları saklıdır.</p>
+        </div>
+    </div>
+</body>
+</html>
