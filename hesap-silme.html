@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hesap Silme - Just Selection</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5; color: #333; line-height: 1.6;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; padding: 30px 20px; text-align: center;
+        }
+        .back-link { color: white; text-decoration: none; display: inline-block; margin-bottom: 15px; }
+        .container { max-width: 700px; margin: 40px auto; padding: 40px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { font-size: 2em; margin-bottom: 10px; }
+        h2 { color: #667eea; margin: 30px 0 15px; font-size: 1.3em; }
+        p { margin-bottom: 15px; }
+        .warning-box {
+            background: #fff3cd; border-left: 4px solid #ffc107;
+            padding: 15px; margin: 20px 0; border-radius: 4px;
+        }
+        .info-box {
+            background: #d1ecf1; border-left: 4px solid #17a2b8;
+            padding: 15px; margin: 20px 0; border-radius: 4px;
+        }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 5px; font-weight: 600; color: #333; }
+        input, textarea {
+            width: 100%; padding: 12px; border: 1px solid #ddd;
+            border-radius: 5px; font-size: 16px;
+        }
+        textarea { min-height: 100px; resize: vertical; }
+        .checkbox-group { display: flex; align-items: flex-start; margin: 20px 0; }
+        .checkbox-group input[type="checkbox"] { margin-right: 10px; margin-top: 4px; width: auto; }
+        .checkbox-group label { font-weight: normal; }
+        .btn {
+            background: #dc3545; color: white; padding: 15px 30px;
+            border: none; border-radius: 5px; font-size: 16px;
+            cursor: pointer; width: 100%; font-weight: 600;
+        }
+        .btn:hover { background: #c82333; }
+        .btn:disabled { background: #ccc; cursor: not-allowed; }
+        ul { margin-left: 30px; margin-bottom: 15px; }
+        .footer { text-align: center; padding: 30px; color: #666; }
+        #successMessage {
+            display: none; background: #d4edda; border: 1px solid #c3e6cb;
+            color: #155724; padding: 20px; border-radius: 5px; margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="index.html" class="back-link">← Ana Sayfa</a>
+        <h1>🗑️ Hesap Silme Talebi</h1>
+        <p>Just Selection</p>
+    </div>
+
+    <div class="container">
+        <div class="warning-box">
+            <strong>⚠️ Uyarı:</strong> Hesabınızı sildiğinizde tüm verileriniz kalıcı olarak silinecektir ve bu işlem geri alınamaz.
+        </div>
+
+        <h2>Silinecek Veriler</h2>
+        <p>Hesabınızı sildiğinizde aşağıdaki veriler <strong>kalıcı olarak silinecektir:</strong></p>
+        <ul>
+            <li>Hesap bilgileriniz (e-posta, ad, soyad)</li>
+            <li>Favorileriniz ve kaydedilmiş ürünler</li>
+            <li>Premium üyelik durumunuz</li>
+            <li>Kullanım istatistikleriniz ve başarılar</li>
+            <li>Uygulama tercihleri ve ayarlarınız</li>
+        </ul>
+
+        <div class="info-box">
+            <strong>ℹ️ Süreç:</strong> Talebiniz 30 gün içinde işleme alınacak ve hesabınız silinecektir. Bu süre zarfında talebinizi iptal edebilirsiniz.
+        </div>
+
+        <h2>Hesap Silme Formu</h2>
+
+        <form id="deleteForm" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label for="email">E-posta Adresiniz *</label>
+                <input type="email" id="email" name="email" required placeholder="kayitli@email.com">
+            </div>
+
+            <div class="form-group">
+                <label for="reason">Hesabınızı neden silmek istiyorsunuz? (İsteğe bağlı)</label>
+                <textarea id="reason" name="reason" placeholder="Geri bildiriminiz bizim için değerlidir..."></textarea>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="confirm" name="confirm" required>
+                <label for="confirm">
+                    Hesabımın ve tüm verilerimin kalıcı olarak silineceğini anlıyorum ve bu işlemin geri alınamaz olduğunu kabul ediyorum.
+                </label>
+            </div>
+
+            <button type="submit" class="btn" id="submitBtn">Hesap Silme Talebini Gönder</button>
+        </form>
+
+        <div id="successMessage">
+            <strong>✅ Talebiniz Alındı</strong><br>
+            Hesap silme talebiniz başarıyla kaydedildi. Size e-posta ile onay gönderilecektir.
+            30 gün içinde hesabınız kalıcı olarak silinecektir.
+            <br><br>
+            Bu süre zarfında fikrinizi değiştirirseniz, lütfen <strong>destek@justselection.com</strong> adresine e-posta gönderin.
+        </div>
+
+        <h2>Alternatif: Uygulama İçinden Silme</h2>
+        <p>Hesabınızı doğrudan uygulama içinden de silebilirsiniz:</p>
+        <ol>
+            <li>Uygulamayı açın</li>
+            <li>Profil sayfasına gidin</li>
+            <li>"Ayarlar" > "Hesabım" bölümüne tıklayın</li>
+            <li>"Hesabı Sil" butonuna basın</li>
+            <li>Onaylayın</li>
+        </ol>
+
+        <h2>İletişim</h2>
+        <p>Sorularınız için:</p>
+        <p>
+            📧 E-posta: <strong>destek@justselection.com</strong><br>
+            🌐 Web: <a href="index.html">justselection.com</a>
+        </p>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2026 Just Selection. Tüm hakları saklıdır.</p>
+        <p>
+            <a href="index.html">Ana Sayfa</a> | 
+            <a href="gizlilik-politikasi.html">Gizlilik Politikası</a> | 
+            <a href="kullanim-sartlari.html">Kullanım Şartları</a>
+        </p>
+    </div>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const reason = document.getElementById('reason').value;
+            const confirm = document.getElementById('confirm').checked;
+            
+            if (!confirm) {
+                alert('Lütfen onay kutusunu işaretleyin.');
+                return;
+            }
+            
+            // Form verilerini konsola yazdır (gerçek uygulamada backend'e gönderilir)
+            console.log('Hesap silme talebi:', { email, reason, date: new Date() });
+            
+            // Formu gizle, başarı mesajını göster
+            document.getElementById('deleteForm').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Gerçek uygulamada burada API çağrısı yapılır:
+            // fetch('/api/delete-account', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify({ email, reason })
+            // });
+        }
+    </script>
+</body>
+</html>
